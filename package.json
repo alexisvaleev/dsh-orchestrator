@@ -102,8 +102,7 @@
   "scripts": {
     "build": "node scripts/emit-typert.mjs && tsc -b && tsdown -c tsdown.host.config.ts && tsdown -c tsdown.client.config.ts",
     "test": "vitest run -c vitest.host.config.ts && vitest run -c vitest.client.config.ts",
-    "clean": "rm -rf lib",
-    "prepare": "pnpm run build"
+    "clean": "rm -rf lib"
   },
   "files": [
     "lib/",
