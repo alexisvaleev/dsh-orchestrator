@@ -1,0 +1,15 @@
+# DeepSeek Harness profile patch contributed by the dsh-orchestrator bundle.
+# Installs the orchestration Host controller and the Client sidebar panel.
+#
+# routeProviders lists the Llm provider routes the planner may distribute work
+# across (e.g. ["devin", "deepseek-official"]); when empty, delegated nodes
+# inherit the calling session's route. Tune it and the limits below in your
+# profile's config for dsh-orchestrator-controller.
+- insert:
+  - id: orchestrator-controller
+    name: dsh-orchestrator-controller
+    config:
+      # Provider routes the planner catalog exposes for per-role routing.
+      routeProviders: !!js (process.env.DSH_ORCHESTRATOR_PROVIDERS ?? '').split(',').map(s => s.trim()).filter(Boolean)
+  - id: ui-orchestrator
+    name: dsh-ui-orchestrator
