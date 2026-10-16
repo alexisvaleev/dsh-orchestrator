@@ -25,31 +25,34 @@ your repository only after you review and approve it.
 Runs are durable (`storageDomain`): a Host restart mid-run marks the run
 `interrupted`, removes its worktree, and keeps it visible in the panel.
 
-## Packages
+## Layout
 
-| Package | Role |
-| --- | --- |
-| `dsh-orchestrator-controller` | Host plugin: engine, planner/worker/validator delegation, git worktree plumbing, `orchestrator` Remote namespace, `orchestrate` agent tool. |
-| `dsh-ui-orchestrator` | Client plugin: sidebar-footer badge + panel (submit form, run tree, validation verdict, diff review, Apply/Discard). |
-| `dsh-orchestrator` | Installable bundle composing both via `cordis.patch.yml`. |
+This repository is a single dual-face package: `src/` holds the Host plugin
+(engine, planner/worker/validator delegation, git worktree plumbing, the
+`orchestrator` Remote namespace, and the `orchestrate` agent tool) and
+`src/client/` holds the browser plugin (sidebar-footer badge + panel: submit
+form, run tree, validation verdict, diff review, Apply/Discard). The manifest's
+`dsh.bundle` block makes the whole repository an installable bundle whose patch
+mounts one Loader row `orchestrator`.
 
 ## Install
 
-From the bundle directory inside this repo (the layout
-[`dsh-devin-limits`](https://github.com/alexisvaleev/dsh-devin-limits)
-established):
+The plugin manager accepts the GitHub URL directly:
 
 ```sh
-pnpm dsh web --patch /path/to/dsh-orchestrator/packages/dsh-orchestrator/cordis.patch.yml
+dsh plugin add github:alexisvaleev/dsh-orchestrator
+# or: dsh plugin add https://github.com/alexisvaleev/dsh-orchestrator
 ```
 
-or list `dsh-orchestrator` in your profile's `cordis.yml` overlays. The patch
-needs the workspace packages on the resolver path — keep this repo beside your
-Harness checkout or publish the packages and pin their versions.
+The package's `prepare` script builds `lib/` from source, so a clean clone is
+enough — no pre-built artifacts are published. For a local checkout instead,
+add `"dsh-orchestrator": "file:/absolute/path/to/dsh-orchestrator"` to your
+profile's `dependencies` and apply `cordis.patch.yml` (or copy its `insert` row
+into the profile patch).
 
 ## Configuration
 
-`dsh-orchestrator-controller` config keys (defaults in parentheses):
+`dsh-orchestrator` config keys (defaults in parentheses):
 
 | Key | Meaning |
 | --- | --- |
@@ -94,11 +97,11 @@ comma-separated shortcut for `routeProviders`.
 
 ```sh
 pnpm install
-pnpm -r build     # tsc + tsdown + typert artifact emit
-pnpm -r test      # vitest — unit, engine, git, and real-Context composition
+pnpm run build    # typert emit → tsc → tsdown (host ESM + client CJS)
+pnpm run test     # vitest — engine/git/graph/service specs + client spec
 ```
 
 The Typert Remote artifacts (`lib/typert.host.js`, `lib/typert.remote-client.js`)
-are emitted by `packages/orchestrator-controller/scripts/emit-typert.mjs`
-because the upstream generator requires the Harness monorepo workspace. The
-emitter's zod schemas mirror `src/types.ts` — keep them in sync.
+are emitted by `scripts/emit-typert.mjs` because the upstream generator requires
+the Harness monorepo workspace. The emitter's zod schemas mirror
+`src/types.ts` — keep them in sync.
