@@ -4,7 +4,7 @@
  * store, and registers the sidebar-footer panel with submit/cancel/apply/
  * discard controls. A Host without the controller rejects the watch; the
  * badge then shows a quiet glyph and an empty panel.
- * @module dsh-ui-orchestrator/client
+ * @module dsh-orchestrator/client
  */
 import { Context } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-api-remotes/client'
@@ -12,8 +12,8 @@ import type {} from '@deepseek-ai/dsh-client-locale/client'
 import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
 import type {} from '@deepseek-ai/dsh-client-ui-sidebar/client'
 import type {} from '@deepseek-ai/dsh-client-ui-theme/client'
-import orchestratorRemote from 'dsh-orchestrator-controller/remote'
-import type { OrchestratorRunView, OrchestratorSubmitInput } from 'dsh-orchestrator-controller/types'
+import orchestratorRemote from 'dsh-orchestrator/remote'
+import type { OrchestratorRunView, OrchestratorSubmitInput } from 'dsh-orchestrator/types'
 import { createSnapshotStore } from '@deepseek-ai/dsh-client-store'
 import { OrchestratorPanel, type OrchestratorInjected } from './OrchestratorPanel.tsx'
 import { en, NS, zh, type OrchestratorKey } from './locales.ts'

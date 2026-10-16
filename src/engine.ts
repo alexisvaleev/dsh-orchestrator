@@ -2,7 +2,7 @@
  * The orchestration engine: plan → schedule → delegate → validate → propose.
  * Every external capability arrives through the injected {@link EngineDeps}
  * seam so the run loop is testable without a live Host.
- * @module dsh-orchestrator-controller/engine
+ * @module dsh-orchestrator/engine
  */
 
 import { mkdir } from 'node:fs/promises'

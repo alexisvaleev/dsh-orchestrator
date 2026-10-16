@@ -7,11 +7,11 @@
  * Usage: node scripts/emit-typert.mjs
  */
 
-import { writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const PACKAGE = 'dsh-orchestrator-controller'
+const PACKAGE = 'dsh-orchestrator'
 const SERVICE = 'orchestratorController'
 const NAMESPACE = 'orchestrator'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -174,6 +174,7 @@ ${descriptors.join('\n')}
 export default TYPERT_REMOTE
 `
 
+mkdirSync(join(root, 'lib'), { recursive: true })
 writeFileSync(join(root, 'lib/typert.host.js'), hostFile)
 writeFileSync(join(root, 'lib/typert.remote-client.js'), clientFile)
 writeFileSync(join(root, 'lib/typert.host.d.ts'), `export declare const TYPERT: {\n  package: string\n  face: string\n  schemas: unknown[]\n  invocations: unknown[]\n  model: unknown\n}\n`)

@@ -3,7 +3,7 @@
  * only; {@link SubagentDriver} adapts the native `ctx.subagents` seam, and
  * tests substitute a scripted driver. No provider-specific logic may appear
  * outside this module.
- * @module dsh-orchestrator-controller/driver
+ * @module dsh-orchestrator/driver
  */
 
 import type { Agent, AgentOptions } from '@deepseek-ai/dsh-agent'

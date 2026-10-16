@@ -6,13 +6,12 @@
  * entry.
  */
 import { Context } from '@deepseek-ai/cordis'
-import type { OrchestratorRunView } from 'dsh-orchestrator-controller/types'
+import type { OrchestratorRunView } from 'dsh-orchestrator/types'
 import { describe, expect, it, vi } from 'vitest'
 import { SlotRegistry } from '@deepseek-ai/dsh-client-ui-renderer/client'
 import { fakeLocale } from './helpers.ts'
 import { apply, inject } from '../src/client/index.ts'
 import type { OrchestratorInjected } from '../src/client/OrchestratorPanel.tsx'
-import { apply as applyNode } from '../src/index.ts'
 import { en, NS, zh } from '../src/client/locales.ts'
 
 /** Slot ledger reader: entry ids currently registered in the sidebar footer list. */
@@ -217,9 +216,5 @@ describe('ui-orchestrator browser half', () => {
     expect(remote.apply).toHaveBeenCalledWith('run-1', 'h')
     await face.discard('run-1')
     expect(remote.discard).toHaveBeenCalledWith('run-1')
-  })
-
-  it('keeps the node entry inert', () => {
-    expect(() => applyNode()).not.toThrow()
   })
 })

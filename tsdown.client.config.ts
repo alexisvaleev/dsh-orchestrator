@@ -3,7 +3,7 @@ import { dirname, resolve as resolvePath } from 'node:path'
 import { defineConfig, type TsdownPlugin } from 'tsdown'
 import { transform } from 'lightningcss'
 
-const ID = 'dsh-ui-orchestrator'
+const ID = 'dsh-orchestrator'
 const CSS_VIRTUAL_SUFFIX = '.mjs'
 
 /** Emit one plugin-owned style injector and the CSS Modules class map. */

@@ -2,7 +2,7 @@
  * Durable run records for the orchestrator domain. The stored record is the
  * wire view plus host-private fields needed for recovery; the Remote surface
  * projects only {@link OrchestratorRunView}.
- * @module dsh-orchestrator-controller/domain
+ * @module dsh-orchestrator/domain
  */
 
 import { defineDomain, domainTable } from '@deepseek-ai/dsh-storage-domain'

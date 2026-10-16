@@ -2,7 +2,7 @@
  * Plan schema and the DAG state machine the engine schedules over. The module
  * is deliberately free of Cordis, subprocess, and model access so every
  * scheduling invariant is unit-testable.
- * @module dsh-orchestrator-controller/graph
+ * @module dsh-orchestrator/graph
  */
 
 import type { ObjectJsonSchema } from '@deepseek-ai/dsh-tools'

@@ -13,7 +13,7 @@ export default defineConfig({
     ],
   },
   test: {
-    include: ['tests/**/*.spec.ts', 'tests/**/*.spec.tsx'],
+    include: ['tests/browser-plugin.client.spec.ts'],
     environment: 'jsdom',
     setupFiles: ['./tests/setup-module-loader.ts'],
     css: { modules: { classNameStrategy: 'stable' } },

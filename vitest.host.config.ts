@@ -33,7 +33,7 @@ function standardDecoratorPlugin() {
 export default defineConfig({
   plugins: [standardDecoratorPlugin()],
   test: {
-    include: ['tests/**/*.spec.ts'],
+    include: ['tests/{engine,git,graph,service}.spec.ts'],
     testTimeout: 15_000,
   },
 })

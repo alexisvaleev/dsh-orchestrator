@@ -11,7 +11,7 @@ import type {
   OrchestratorNodeView,
   OrchestratorRunStatus,
   OrchestratorRunView,
-} from 'dsh-orchestrator-controller/types'
+} from 'dsh-orchestrator/types'
 import { RiskConfirmation, Tooltip, useDismissOnOutsidePointer } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { InjectFace, PropsLocale, PropsRuntime, TranslateNS } from '@deepseek-ai/dsh-client-ui-slots'
 import { NS } from './locales.ts'

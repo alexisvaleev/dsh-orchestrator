@@ -9,5 +9,5 @@ export default defineConfig({
   fixedExtension: false,
   dts: false,
   clean: false,
-  deps: { neverBundle: [/^@deepseek-ai\//, /^zod$/] },
+  deps: { neverBundle: [/^@deepseek-ai\//, /^zod$/, /^dsh-orchestrator(\/|$)/] },
 })

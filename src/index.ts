@@ -5,7 +5,7 @@
  * exact-hash approval. All writes happen inside a per-run git worktree; the
  * user's workspace is untouched until {@link apply} revalidates the reviewed
  * diff.
- * @module dsh-orchestrator-controller
+ * @module dsh-orchestrator
  */
 
 import { homedir } from 'node:os'

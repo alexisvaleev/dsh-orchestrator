@@ -3,7 +3,7 @@
  * `ctx.subprocess` seam (no shell, scrubbed environment) against an explicit
  * `cwd`; nothing in this module mutates the user's workspace except
  * {@link applyDiff}, which the engine reaches only after hash-bound approval.
- * @module dsh-orchestrator-controller/git
+ * @module dsh-orchestrator/git
  */
 
 import { createHash } from 'node:crypto'

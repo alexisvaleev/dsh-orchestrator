@@ -1,7 +1,7 @@
 /**
  * Prompt builders for the three orchestration roles. Each child gets a
  * self-contained instruction — spawned children see no parent history.
- * @module dsh-orchestrator-controller/prompts
+ * @module dsh-orchestrator/prompts
  */
 
 import type { ObjectJsonSchema } from '@deepseek-ai/dsh-tools'
