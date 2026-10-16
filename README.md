@@ -44,11 +44,11 @@ dsh plugin add github:alexisvaleev/dsh-orchestrator
 # or: dsh plugin add https://github.com/alexisvaleev/dsh-orchestrator
 ```
 
-The package's `prepare` script builds `lib/` from source, so a clean clone is
-enough — no pre-built artifacts are published. For a local checkout instead,
-add `"dsh-orchestrator": "file:/absolute/path/to/dsh-orchestrator"` to your
-profile's `dependencies` and apply `cordis.patch.yml` (or copy its `insert` row
-into the profile patch).
+Built `lib/` artifacts are committed, so the install never runs build scripts —
+pnpm does not allow git-hosted lifecycle scripts without a consumer allowlist.
+For a local checkout instead, add `"dsh-orchestrator":
+"file:/absolute/path/to/dsh-orchestrator"` to your profile's `dependencies` and
+apply `cordis.patch.yml` (or copy its `insert` row into the profile patch).
 
 ## Configuration
 
