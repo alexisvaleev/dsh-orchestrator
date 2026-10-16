@@ -1,12 +1,60 @@
 {
-  "name": "dsh-orchestrator-workspace",
-  "private": true,
+  "name": "dsh-orchestrator",
+  "version": "0.1.0",
+  "description": "Multi-agent orchestration plugin for DeepSeek Harness: one complex task in, a reviewed and approved diff out",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "orchestration",
+    "multi-agent"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexisvaleev/dsh-orchestrator.git"
+  },
   "type": "module",
   "packageManager": "pnpm@10.4.1",
+  "dsh": {
+    "bundle": {
+      "patch": "cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "dsh-orchestrator-controller": "file:packages/orchestrator-controller",
+    "dsh-ui-orchestrator": "file:packages/ui-orchestrator"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "tsdown": "^0.22.2",
+    "@deepseek-ai/dsh-agent": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-subprocess": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-tools": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-typert-protocol": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-brand": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-storage-domain": "0.1.7-rc.2",
+    "@deepseek-ai/cordis": "4.0.4",
+    "@deepseek-ai/schemastery": "3.18.4",
+    "vitest": "^4.1.12"
+  },
   "scripts": {
     "build": "pnpm -r --filter \"./packages/*\" run build",
     "test": "pnpm -r --filter \"./packages/*\" run test",
-    "clean": "rm -rf packages/*/lib"
+    "clean": "rm -rf packages/*/lib",
+    "prepare": "pnpm run build"
   },
-  "files": []
+  "files": [
+    "cordis.patch.yml",
+    "packages/orchestrator-controller/package.json",
+    "packages/orchestrator-controller/lib/",
+    "packages/orchestrator-controller/src/",
+    "packages/ui-orchestrator/package.json",
+    "packages/ui-orchestrator/lib/",
+    "packages/ui-orchestrator/src/"
+  ],
+  "engines": {
+    "node": ">=22"
+  }
 }
